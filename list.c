@@ -78,7 +78,20 @@ void *prevList(List *list) {
     return list->current->data;
 }
 
-void pushFront(List *list, void *data) {}
+void pushFront(List *list, void *data) {
+  Node * newNodo = createNode(data);
+  if (list->head == NULL)
+  {
+    list->head = newNodo;
+    list->tail = newNodo;
+  }
+  else
+  {
+    newNodo->next = list->head;
+    list->head->prev = newNodo;
+    list->head = newNodo;
+  }
+}
 
 void pushBack(List *list, void *data) {
   list->current = list->tail;
